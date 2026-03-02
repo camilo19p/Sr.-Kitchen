@@ -9,7 +9,7 @@
 
 ## 📋 Descripción del Proyecto
 
-**Sr. Kitchen** es un ** aplicativo web ** diseñado para optimizar la operación de restaurantes de pequeña y mediana escala. Automatiza y centraliza la gestión de **compras**, **ventas**, **inventarios**, **pedidos** y **reportes financieros**, eliminando procesos manuales propensos a errores y permitiendo decisiones más rápidas y basadas en datos reales.
+**Sr. Kitchen** es un aplicativo web diseñado para optimizar la operación de restaurantes de pequeña y mediana escala. Automatiza y centraliza la gestión de **compras**, **ventas**, **inventarios**, **pedidos** y **reportes financieros**, eliminando procesos manuales propensos a errores y permitiendo decisiones más rápidas y basadas en datos reales.
 
 - **Backend**: Java 17+ con Spring Boot (API REST robusta y escalable)  
 - **Base de datos**: MongoDB (esquema flexible para productos, pedidos e inventarios)  
