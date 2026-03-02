@@ -1,4 +1,4 @@
-# 🍽️ Sr. Kitchen 
+# 🍽️ Sr. Kitchen
 
 [![Java](https://img.shields.io/badge/Java-17%2B-blue)](https://www.java.com)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)](https://spring.io/projects/spring-boot)
@@ -7,56 +7,68 @@
 [![HTML5](https://img.shields.io/badge/HTML5-%23E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/es/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-%231572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/es/docs/Web/CSS)
 
-## 📋 Descripción
+## 📋 Descripción del Proyecto
 
-**Sr. Kitchen** es un **aplicativo web** desarrollado para optimizar la gestión operativa de restaurantes de pequeña y mediana escala. Centraliza y automatiza el control de **compras**, **ventas**, **inventarios** y generación de **reportes financieros**, reemplazando procesos manuales propensos a errores y permitiendo una toma de decisiones más rápida y basada en datos.
+**Sr. Kitchen** es un **aplicativo web ** diseñado para optimizar la operación de restaurantes de pequeña y mediana escala. Automatiza y centraliza la gestión de **compras**, **ventas**, **inventarios**, **pedidos** y **reportes financieros**, eliminando procesos manuales propensos a errores y permitiendo decisiones más rápidas y basadas en datos reales.
 
-El sistema integra tecnologías modernas y escalables: backend robusto en **Java + Spring Boot**, base de datos flexible **MongoDB**, frontend intuitivo con **HTML/CSS + framework moderno** y despliegue portable mediante **Docker**.
+- **Backend**: Java 17+ con Spring Boot (API REST robusta y escalable)  
+- **Base de datos**: MongoDB (esquema flexible para productos, pedidos e inventarios)  
+- **Frontend**: HTML5, CSS3, JavaScript + framework moderno (responsive e intuitivo)  
+- **Despliegue**: Docker + Docker Compose (portabilidad y facilidad de instalación)  
 
-
-**Autores:**
-- Camilo Andrés Martínez Peña
-- Jesús David Caldera Baldovino
-- Carlos Andrés Ruiz Herrera
-- Jose Manuel Ayola Arbeláez
+**Autores:**  
+- Camilo Andrés Martínez Peña  
+- Jesús David Caldera Baldovino  
+- Carlos Andrés Ruiz Herrera  
+- Jose Manuel Ayola Arbeláez  
 
 ## ✨ Características principales
 
-- Gestión completa de **productos** e **ingredientes** (CRUD)
-- Registro y seguimiento automático de **pedidos** con cambio de estados
-- Control de **inventario** en tiempo real con alertas de stock bajo
-- Registro de **compras** y **ventas** con actualización automática de existencias
-- Dashboard con indicadores clave (ventas, ingresos, productos más vendidos)
-- Generación de **reportes** financieros y operativos
-- Asignación de **roles y permisos** diferenciados (Administrador / Mesero)
-- Interfaz gráfica **intuitiva** y responsive
-- Despliegue simplificado con **Docker** y **Docker Compose**
-- (En desarrollo / futuro) Pronóstico de demanda y recomendaciones personalizadas
+- Gestión completa de **productos** e **ingredientes** (CRUD completo)  
+- Registro y seguimiento de **pedidos** con máquina de estados (pendiente → en preparación → servido → pagado)  
+- Control de **inventario** en tiempo real + alertas automáticas de stock bajo  
+- Registro de **compras** y **ventas** con actualización automática de existencias  
+- **Dashboard** con KPIs clave: ventas del día/mes, ingresos, productos más vendidos, ticket promedio  
+- Generación de **reportes** financieros y operativos (exportables)  
+- Sistema de **roles y permisos**: Administrador vs. Mesero  
+- Interfaz **responsive** y amigable para uso en tablets y computadoras  
+- Despliegue sencillo con **Docker**  
+- **Próximamente**: pronóstico de demanda, recomendaciones de compra y análisis predictivo  
 
 ## 🛠️ Tecnologías utilizadas
 
 | Capa              | Tecnología                          | Propósito                              |
 |-------------------|-------------------------------------|----------------------------------------|
-| Backend           | Java 17+, Spring Boot               | Lógica de negocio, API REST            |
-| Base de datos     | MongoDB                             | Almacenamiento flexible y escalable    |
-| Frontend          | HTML5, CSS3, JavaScript + framework | Interfaz de usuario moderna e intuitiva|
-| Contenerización   | Docker, Docker Compose              | Portabilidad y despliegue sencillo     |
-| Construcción      | Maven                               | Gestión de dependencias y empaquetado  |
-| Reportes / análisis | (Integración futura con R / Python) | Análisis avanzado |
+| Backend           | Java 17+, Spring Boot 3.x           | Lógica de negocio y API REST           |
+| Base de datos     | MongoDB                             | Almacenamiento NoSQL flexible          |
+| Frontend          | HTML5, CSS3, JavaScript + framework | Interfaz moderna y responsive          |
+| Contenerización   | Docker, Docker Compose              | Portabilidad y despliegue rápido       |
+| Gestión de dependencias | Maven                         | Construcción y paquetes                |
+| Análisis / Reportes | Power BI (dashboard separado)     | Visualización avanzada de datos        |
 
 ## 🖼️ Capturas de pantalla
 
-Actualmente disponibles:
+### Sistema Web (Backend + Frontend)
 
 - **Dashboard principal**  
   ![Dashboard](capturas/captura1.png)
 
 - **Login**  
-  ![Productos](capturas/captura2.png)
+  ![Login](capturas/captura2.png)
 
-## 🚀 Cómo ejecutar el proyecto
+## 📊 Dashboard Analítico en Power BI
 
-### Opción 1: Usando Docker (recomendado)
+Complemento analítico del sistema: análisis histórico y visual de ventas, platos estrella, rendimiento por mesero y tendencias mensuales.
+
+**[➡️ Abrir Dashboard Interactivo de Sr. Kitchen](https://app.powerbi.com/view?r=eyJrIjoiZmVmZDc1N2QtZTMwOS00MjUyLWE2NDUtYzA4ODIxN2I0MzA2IiwidCI6IjlkMTJiZjNmLWU0ZjYtNDdhYi05MTJmLTFhMmYwZmM0OGFhNCIsImMiOjR9)**
+
+- Creado con **Power BI Desktop** (Power Query + DAX)  
+- Publicado en **Power BI Service**  
+- Datos 100% ficticios generados para demostración y portafolio
+
+## 🚀 Cómo ejecutar el aplicativo
+
+### Opción recomendada: Docker
 
 1. Clona el repositorio
    ```bash
@@ -66,13 +78,13 @@ Actualmente disponibles:
 📜 Licencia y Derechos de Autor
 © 2025–2026 Camilo Andrés Martínez Peña y colaboradores
 Todos los derechos reservados.
-Este software (código fuente, ejecutables, documentación, capturas y recursos asociados) está protegido por derechos de autor.
-Está prohibido (sin autorización escrita previa de los autores):
+Este software (código fuente, documentación, capturas, recursos asociados) está protegido por derechos de autor.
+Prohibido (sin autorización escrita previa de los autores):
 
 Copiar, reproducir, modificar o crear obras derivadas
 Distribuir, publicar o subir a otros repositorios/plataformas
-Usar con fines comerciales, institucionales o educativos sin permiso
+Uso comercial, institucional o educativo sin permiso expreso
 Eliminar o alterar esta nota de derechos de autor
 
-Para solicitar licencia, colaboración o permiso de uso, contacta a:
+Para solicitar licencia, colaboración, permiso de uso o más información:
 ✉️ martinezcamilo25p@gmail.com
