@@ -65,9 +65,6 @@ Actualmente disponibles:
    git clone https://github.com/camilo19p/Sr.-Kitchen.git
    cd Sr.-Kitchen
 
-Accede a la aplicación
-Frontend → http://localhost:http://localhost:8080/
-
 📜 Licencia y Derechos de Autor
 © 2025–2026 Camilo Andrés Martínez Peña y colaboradores
 Todos los derechos reservados.
