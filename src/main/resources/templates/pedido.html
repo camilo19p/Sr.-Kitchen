@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gestión de Pedidos | Kitchen</title>
+    <link rel="stylesheet" th:href="@{/css/pedido.css}">
+
+
+</head>
+
+<body>
+
+<nav class="menu-bar">
+    <ul>
+        <li><a href="/home" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_MESERO')">Inicio</a></li>
+        <li><a href="/mesa" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_MESERO')">Mesa</a></li>
+        <li><a href="/pedidos" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_MESERO')">Pedidos</a></li>
+        <li><a href="/factura" sec:authorize="hasAnyAuthority('ROLE_ADMIN','ROLE_MESERO')">Facturas</a></li>
+        <li><a href="/mesero" sec:authorize="hasAuthority('ROLE_ADMIN')">Mesero</a></li>
+        <li><a href="/platillos" sec:authorize="hasAuthority('ROLE_ADMIN')">Platillos</a></li>
+        <li><a href="/datos" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">Datos</a></li>
+        <li class="logout-nav">
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit" style="background:#d9534f; color:white; border:none; padding:10px 20px; border-radius:12px; cursor:pointer; font-weight:bold; box-shadow:0 4px 12px rgba(0,0,0,0.3); transition:all 0.3s ease;">Cerrar Sesión</button>
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h1>Gestión de Pedidos</h1>
+
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+    <div th:if="${param.exito}" class="success" th:text="${param.exito}"></div>
+
+    <form th:action="@{/pedidos}" method="post" th:object="${pedido}">
+        <label for="mesaId">Mesa:</label>
+        <select id="mesaId" th:field="*{mesaId}" required>
+            <option value="">-- Seleccione una mesa --</option>
+            <option th:each="mesa : ${mesas}" th:value="${mesa.id}"
+                    th:text="'Mesa ' + ${mesa.num} + (${mesa.ocupado} ? ' (Ocupada)' : '')"
+                    th:disabled="${mesa.ocupado}"></option>
+        </select>
+
+        <label for="meseroId">Mesero:</label>
+        <select id="meseroId" th:field="*{meseroId}" required>
+            <option value="">-- Seleccione un mesero --</option>
+            <option th:each="mesero : ${meseros}" th:value="${mesero.id}" th:text="${mesero.name}"></option>
+        </select>
+
+        <h3>Menú</h3>
+        <input type="text" id="busquedaPlatillo" placeholder="Buscar platillo...">
+
+        <div th:each="platillo : ${platillos}" class="platillo-item">
+            <input type="checkbox" name="platillosSeleccionados" th:value="${platillo.id}" id="platillo_${platillo.id}">
+            <label th:for="'platillo_' + ${platillo.id}">
+                <strong th:text="${platillo.name}"></strong>
+                <span th:text="${' - $' + #numbers.formatDecimal(platillo.price, 1, 2)}" style="color: #555;"></span>
+            </label>
+            <div>
+                <label>Cantidad:</label>
+                <input type="number" th:name="'cantidad_' + ${platillo.id}" min="1" value="1" class="cantidad-input">
+            </div>
+        </div>
+
+        <p style="margin-top:15px; font-style:italic; color:#555;">El total se calculará automáticamente al procesar el pedido.</p>
+
+        <button type="submit" class="btn-submit">Crear Pedido</button>
+    </form>
+
+    <h2>Últimos Pedidos</h2>
+
+    <div th:if="${pedidosRecientes != null and !pedidosRecientes.isEmpty()}">
+        <div th:each="pedido : ${pedidosRecientes}" class="pedido-card">
+            <h3>Pedido #<span th:text="${pedido.id.substring(0,8)}"></span></h3>
+            <p><strong>Mesa:</strong> <span th:text="${pedido.mesaNum}"></span></p>
+            <p><strong>Mesero:</strong> <span th:text="${pedido.meseroName}"></span></p>
+            <p><strong>Fecha:</strong> <span th:text="${#temporals.format(pedido.fecha, 'dd/MM/yyyy HH:mm')}"></span></p>
+            <p><strong>Total:</strong> <span th:text="${'$' + #numbers.formatDecimal(pedido.total, 1, 2)}"></span></p>
+
+            <h4>Items:</h4>
+            <ul class="item-list">
+                <li th:each="item : ${pedido.items}">
+                    <span th:text="${item.name}"></span> - Cantidad:
+                    <span th:text="${item.cant}"></span> - <span th:text="${'$' + #numbers.formatDecimal(item.price, 1, 2)}"></span>
+                </li>
+            </ul>
+
+            <div style="margin-top:10px;">
+                <a th:href="@{'/pedidos/editar/' + ${pedido.id}}">Editar</a> |
+                <a th:href="@{'/pedidos/eliminar/' + ${pedido.id}}"
+                   onclick="return confirm('¿Seguro que desea eliminar este pedido?');">Eliminar</a>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${pedidosRecientes == null or pedidosRecientes.isEmpty()}"
+         style="background:#eef6ff; padding:12px; border-radius:6px; color:#555; text-align:center;">
+        No hay pedidos recientes.
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputBusqueda = document.getElementById('busquedaPlatillo');
+      const itemsPlatillos = document.querySelectorAll('.platillo-item');
+
+      inputBusqueda.addEventListener('input', () => {
+        const filtro = inputBusqueda.value.toLowerCase();
+        itemsPlatillos.forEach(item => {
+          const nombre = item.querySelector('label strong')?.textContent.toLowerCase() || '';
+          item.style.display = nombre.includes(filtro) ? 'block' : 'none';
+        });
+      });
+    });
+</script>
+
+</body>
+</html>
+
+

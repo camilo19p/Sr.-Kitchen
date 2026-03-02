@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Editar Pedido</title>
+    <link rel="stylesheet" th:href="@{/css/pedidoedit.css}">
+</head>
+
+<body>
+<div class="container">
+    <a class="volver" th:href="@{/home}">← Volver</a>
+    <h2>Editar Pedido</h2>
+    <form th:action="@{/pedidos/editar}" method="post">
+        <input type="hidden" name="id" th:value="${pedido.id}" />
+        <input type="hidden" name="mesaId" th:value="${pedido.mesaId}" />
+
+        <label>Mesa actual:</label>
+        <div class="mesa-actual">
+            <span th:if="${mesaActual != null}" th:text="'Mesa ' + ${mesaActual.num}"></span>
+            <span th:if="${mesaActual == null}">No asignada</span>
+        </div>
+
+        <label>Platillos existentes:</label>
+        <div th:each="item : ${pedido.items}" class="item-existente">
+            <div class="flex-row">
+                <input type="hidden" name="itemsExistentes" th:value="${item.productId}" />
+                <input type="text" th:value="${item.name}" disabled />
+                <input type="number" name="cantidadesExistentes" th:value="${item.unidades}" min="1" />
+            </div>
+        </div>
+
+        <label>Agregar nuevos platillos:</label>
+        <div class="search-row" th:each="i : ${#numbers.sequence(0, 2)}">
+            <input type="text" class="platillo-busqueda" list="platillosList" placeholder="Buscar platillo..." />
+            <input type="hidden" name="nuevosPlatillos" />
+            <input type="number" name="nuevasCantidades" min="1" value="1" />
+        </div>
+
+        <datalist id="platillosList">
+            <option th:each="platillo : ${platillosDisponibles}" th:data-id="${platillo.id}" th:value="${platillo.name}"></option>
+        </datalist>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const opciones = [...document.querySelectorAll("#platillosList option")];
+        document.querySelectorAll(".platillo-busqueda").forEach((inputBusqueda, index) => {
+            const hiddenInput = document.getElementsByName("nuevosPlatillos")[index];
+            inputBusqueda.addEventListener("change", () => {
+                const seleccionado = opciones.find(opt => opt.value === inputBusqueda.value);
+                hiddenInput.value = seleccionado ? seleccionado.dataset.id : "";
+            });
+        });
+    });
+</script>
+</body>
+</html>
