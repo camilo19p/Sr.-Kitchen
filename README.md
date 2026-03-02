@@ -13,9 +13,8 @@
 
 El sistema integra tecnologías modernas y escalables: backend robusto en **Java + Spring Boot**, base de datos flexible **MongoDB**, frontend intuitivo con **HTML/CSS + framework moderno** y despliegue portable mediante **Docker**.
 
-**Proyecto de aula - Minería de Datos I**  
-**Programa:** Tecnología en Desarrollo de Software  
-**Estudiantes:**
+
+**Autores:**
 - Camilo Andrés Martínez Peña
 - Jesús David Caldera Baldovino
 - Carlos Andrés Ruiz Herrera
