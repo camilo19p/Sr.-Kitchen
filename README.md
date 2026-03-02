@@ -44,7 +44,7 @@ Repositorio: [https://github.com/camilo19p/Sr.-Kitchen](https://github.com/camil
 | Frontend          | HTML5, CSS3, JavaScript + framework | Interfaz de usuario moderna e intuitiva|
 | Contenerización   | Docker, Docker Compose              | Portabilidad y despliegue sencillo     |
 | Construcción      | Maven                               | Gestión de dependencias y empaquetado  |
-| Reportes / análisis | (Integración futura con R / Python) | Análisis avanzado y minería de datos   |
+| Reportes / análisis | (Integración futura con R / Python) | Análisis avanzado |
 
 ## 🖼️ Capturas de pantalla
 
@@ -53,7 +53,7 @@ Actualmente disponibles:
 - **Dashboard principal**  
   ![Dashboard](capturas/captura1.png)
 
-- **Gestión de productos**  
+- **Login**  
   ![Productos](capturas/captura2.png)
 
 ## 🚀 Cómo ejecutar el proyecto
@@ -65,7 +65,6 @@ Actualmente disponibles:
    git clone https://github.com/camilo19p/Sr.-Kitchen.git
    cd Sr.-Kitchen
 
-Levanta los serviciosBashdocker compose up -d
 Accede a la aplicación
 Frontend → http://localhost:http://localhost:8080/
 
