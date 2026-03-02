@@ -20,8 +20,6 @@ El sistema integra tecnologías modernas y escalables: backend robusto en **Java
 - Carlos Andrés Ruiz Herrera
 - Jose Manuel Ayola Arbeláez
 
-Repositorio: [https://github.com/camilo19p/Sr.-Kitchen](https://github.com/camilo19p/Sr.-Kitchen)
-
 ## ✨ Características principales
 
 - Gestión completa de **productos** e **ingredientes** (CRUD)
