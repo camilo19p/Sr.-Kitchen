@@ -1,4 +1,4 @@
-# 🍽️ Sr. Kitchen - Sistema de Gestión Inteligente para Restaurantes
+# 🍽️ Sr. Kitchen 
 
 [![Java](https://img.shields.io/badge/Java-17%2B-blue)](https://www.java.com)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-green)](https://spring.io/projects/spring-boot)
